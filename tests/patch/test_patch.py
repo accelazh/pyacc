@@ -50,6 +50,13 @@ with Patch('pyacc.tests.patch.mdc.cls_c.C', decorate=False, return_value=7) as m
     a.f1()
     print 'mock trace %s' % mock
 
+print '----------path error-----------'
+
+with Patch('pyacc.tests.patch.mdc.cls_c.E', decorate=False, return_value=7) as mock:
+    a = A()
+    a.f1()
+    print 'mock trace %s' % mock
+
 print '----------------------------'
 
 a = A()

@@ -75,6 +75,13 @@ class Patch(object):
         for token in middle_paths:
             parent = getattr(parent, token)
 
+        if not hasattr(parent, method_name):
+            raise AttributeError("Parent %(parent)s doesn't have method "
+                                 "%(method_name)s" % {
+                                     'parent': parent.__name__,
+                                     'method_name': method_name,
+                                 })
+
         # parent can be either module or class, or nested class
         return parent, method_name
 

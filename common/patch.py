@@ -93,12 +93,14 @@ class Patch(object):
 
     def _patch(self):
         trace = {
+            'run': 0,  # my invoke count
             'args': None,
             'kwargs': None,
             'return_value': None
         }
 
         def _decorator(*args, **kwargs):
+            trace['run'] += 1
             trace['args'] = args
             trace['kwargs'] = kwargs
             if self.decorate:
